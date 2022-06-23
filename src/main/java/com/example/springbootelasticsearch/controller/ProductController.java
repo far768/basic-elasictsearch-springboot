@@ -14,11 +14,6 @@ public class ProductController {
     @Autowired
     private ProductServiceImpl productService;
 
-    @GetMapping("/findAll")
-    public Iterable<Product> findByProductName() {
-        return productService.findAll();
-    }
-
     @PostMapping("/createProducts")
     public void createProductIndex(@RequestBody List<Product> products) {
         productService.createProducts(products);
@@ -28,4 +23,15 @@ public class ProductController {
     public void createProduct(@RequestBody Product product) {
         productService.createProduct(product);
     }
+
+    @GetMapping("/findAll")
+    public Iterable<Product> findAll() {
+        return productService.findAll();
+    }
+
+    @GetMapping("/deleteAll")
+    public void deleteAll() {
+        productService.deleteAll();
+    }
+
 }
